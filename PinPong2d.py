@@ -10,7 +10,9 @@ window.bgcolor("black")
 # Отрисовка поля
 border_rectangle = turtle.Turtle()
 border_rectangle.color("white")
-border_rectangle.speed(0)
+border_rectangle.speed(5)
+# Спрятал отрисовку курсора
+border_rectangle.hideturtle()
 border_rectangle.up()
 border_rectangle.goto(-500, 300)
 border_rectangle.down()
@@ -36,6 +38,5 @@ for i in range(0,25,1):
         border_rectangle.forward(24)
         border_rectangle.down()
 
-border_rectangle.hideturtle()
 
 window.mainloop()
