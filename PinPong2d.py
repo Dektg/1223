@@ -7,6 +7,7 @@ window.title("2d Ping-Pong")
 window.setup(width=1.0, height=1.0)
 # Задний фон
 window.bgcolor("black")
+window.tracer(2)
 
 # Отрисовка поля
 border_rectangle = turtle.Turtle()
@@ -54,6 +55,8 @@ rocket_b.shapesize(stretch_len=1, stretch_wid=5)
 rocket_b.penup()
 rocket_b.goto(450, 0)
 space_rocket = 80
+
+
 
 def move_up():
     y = rocket_a.ycor() + space_rocket
@@ -115,4 +118,13 @@ while True:
         ball.goto(0, randint(-150, 150))
         ball.dx = choice([-5, 5])
         ball.dy = choice([-5, 5])
+
+    if ball.ycor() >= rocket_b.ycor() - 50 and ball.ycor() <= rocket_b.ycor() + 50 \
+            and ball.xcor() >= rocket_b.xcor() - 5 and ball.xcor() <= rocket_b.xcor() + 5:
+        ball.dx = -ball.dx
+
+    if ball.ycor() >= rocket_a.ycor() - 50 and ball.ycor() <= rocket_a.ycor() + 50 \
+            and ball.xcor() >= rocket_a.xcor() - 5 and ball.xcor() <= rocket_a.xcor() + 5:
+        ball.dx = -ball.dx
+
 window.mainloop()
