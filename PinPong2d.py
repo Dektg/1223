@@ -1,6 +1,8 @@
 import turtle
 from random import choice, randint
 
+score_a = 0
+score_b = 0
 window = turtle.Screen()
 window.title("2d Ping-Pong")
 # Размеры окна на весь монитор
@@ -39,6 +41,21 @@ for i in range(0, 25, 1):
         border_rectangle.forward(24)
         border_rectangle.down()
 
+FONT = ("Arial", 44)
+score_a = 0
+s1 = turtle.Turtle(visible=False)
+s1.color('white')
+s1.penup()
+s1.setposition(-200, 300)
+s1.write(score_a, font=FONT)
+
+score_b = 0
+s2 = turtle.Turtle(visible=False)
+s2.color('white')
+s2.penup()
+s2.setposition(200, 300)
+s2.write(score_a, font=FONT)
+
 rocket_a = turtle.Turtle()
 rocket_a.color("black")
 rocket_a.shape("square")
@@ -55,8 +72,6 @@ rocket_b.shapesize(stretch_len=1, stretch_wid=5)
 rocket_b.penup()
 rocket_b.goto(450, 0)
 space_rocket = 80
-
-
 
 def move_up():
     y = rocket_a.ycor() + space_rocket
@@ -110,14 +125,18 @@ while True:
         ball.dy = -ball.dy
 
     if ball.xcor() >= 490:
+        score_b += 1
         ball.goto(0, randint(-150, 150))
         ball.dx = choice([-5, 5])
         ball.dy = choice([-5, 5])
+        score_b += 1
 
     if ball.xcor() <= -490:
+        score_a += 1
         ball.goto(0, randint(-150, 150))
         ball.dx = choice([-5, 5])
         ball.dy = choice([-5, 5])
+        score_a += 1
 
     if ball.ycor() >= rocket_b.ycor() - 50 and ball.ycor() <= rocket_b.ycor() + 50 \
             and ball.xcor() >= rocket_b.xcor() - 5 and ball.xcor() <= rocket_b.xcor() + 5:
