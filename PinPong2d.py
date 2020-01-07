@@ -83,8 +83,8 @@ def move_down_b():
 
 ball = turtle.Turtle()
 ball.shape("circle")
-ball.dx = 3
-ball.dy = 3
+ball.dx = 5
+ball.dy = 5
 ball.penup()
 
 window.listen()
@@ -95,7 +95,18 @@ window.onkeypress(move_down_b, "Down")
 
 while True:
     ball.setx(ball.xcor() + ball.dx)
-
     ball.sety(ball.ycor() + ball.dy)
+
+    if ball.ycor() >= 290:
+        ball.dy = -ball.dy
+
+    if ball.ycor() <= -290:
+        ball.dy = -ball.dy
+
+    if ball.xcor() >= 490:
+        ball.dx = -ball.dx
+
+    if ball.xcor() <= -490:
+        ball.dx = -ball.dx
 
 window.mainloop()
