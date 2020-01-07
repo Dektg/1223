@@ -81,11 +81,21 @@ def move_down_b():
         y = -250
     rocket_b.sety(y)
 
+ball = turtle.Turtle()
+ball.shape("circle")
+ball.dx = 3
+ball.dy = 3
+ball.penup()
 
 window.listen()
 window.onkeypress(move_up, "w")
 window.onkeypress(move_down, "s")
 window.onkeypress(move_up_b, "Up")
 window.onkeypress(move_down_b, "Down")
+
+while True:
+    ball.setx(ball.xcor() + ball.dx)
+
+    ball.sety(ball.ycor() + ball.dy)
 
 window.mainloop()
