@@ -45,23 +45,6 @@ rocket_a.shapesize(stretch_len=1, stretch_wid=5)
 rocket_a.penup()
 rocket_a.goto(-450, 0)
 
-
-def move_up_a():
-    # Узнаю Y у ракетки
-    y_rocket_a = rocket_a.ycor() + 80
-    if y_rocket_a > 250:
-        y_rocket_a = 250
-    rocket_a.sety(y_rocket_a)
-
-
-def move_down_a():
-    # Узнаю Y у ракетки
-    y_rocket_a = rocket_a.ycor() - 80
-    if y_rocket_a < -250:
-        y_rocket_a = -250
-    rocket_a.sety(y_rocket_a)
-
-
 rocket_b = turtle.Turtle()
 rocket_b.color("black")
 rocket_b.shape("square")
@@ -71,26 +54,38 @@ rocket_b.penup()
 rocket_b.goto(450, 0)
 
 
+def move_up():
+    y = rocket_a.ycor() + 10
+    if y > 250:
+        y = 250
+    rocket_a.sety(y)
+
+
+def move_down():
+    y = rocket_a.ycor() - 10
+    if y < -250:
+        y = -250
+    rocket_a.sety(y)
+
+
 def move_up_b():
-    # Узнаю Y у ракетки
-    y_rocket_b = rocket_b.ycor() + 80
-    if y_rocket_b > 250:
-        y_rocket_b = 250
-    rocket_b.sety(y_rocket_b)
+    y = rocket_b.ycor() + 10
+    if y > 250:
+        y = 250
+    rocket_b.sety(y)
 
 
 def move_down_b():
-    # Узнаю Y у ракетки
-    y_rocket_b = rocket_b.ycor() - 80
-    if y_rocket_b < -250:
-        y_rocket_b = -250
-    rocket_a.sety(y_rocket_b)
+    y = rocket_b.ycor() - 10
+    if y < -250:
+        y = -250
+    rocket_b.sety(y)
 
 
 window.listen()
-window.onkeypress(move_up_a, "q")
-window.onkeypress(move_down_a, "a")
-#window.onkeypress(move_up_b, "w")
-#window.onkeypress(move_down_b, "s")
+window.onkeypress(move_up, "w")
+window.onkeypress(move_down, "s")
+window.onkeypress(move_up_b, "Up")
+window.onkeypress(move_down_b, "Down")
 
 window.mainloop()
