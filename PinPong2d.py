@@ -126,17 +126,19 @@ while True:
 
     if ball.xcor() >= 490:
         score_b += 1
+        s2.clear()
+        s2.write(score_b, font=FONT)
         ball.goto(0, randint(-150, 150))
         ball.dx = choice([-5, 5])
         ball.dy = choice([-5, 5])
-        score_b += 1
 
     if ball.xcor() <= -490:
         score_a += 1
+        s1.clear()
+        s1.write(score_a , font=FONT)
         ball.goto(0, randint(-150, 150))
         ball.dx = choice([-5, 5])
         ball.dy = choice([-5, 5])
-        score_a += 1
 
     if ball.ycor() >= rocket_b.ycor() - 50 and ball.ycor() <= rocket_b.ycor() + 50 \
             and ball.xcor() >= rocket_b.xcor() - 5 and ball.xcor() <= rocket_b.xcor() + 5:
